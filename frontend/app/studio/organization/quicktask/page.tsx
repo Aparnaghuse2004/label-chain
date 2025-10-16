@@ -1,3 +1,7 @@
+"use client";
+
+import { QuickCreateTask } from "@/components/tasks/quick-create-task";
+
 export default function QuickTaskPage() {
   return (
     <div className="flex-1 space-y-4 p-8 pt-6">
@@ -6,9 +10,10 @@ export default function QuickTaskPage() {
       </div>
       <div className="space-y-4">
         <p className="text-muted-foreground">
-          Quick task creation functionality will be implemented here.
+          Create a new labeling task quickly and easily. Fill in the details
+          below and upload your images to get started.
         </p>
-        {/* Quick create content will be added later */}
+        <QuickCreateTask />
       </div>
     </div>
   );

@@ -5,6 +5,7 @@ import { ClerkProvider } from "@clerk/nextjs";
 import ConvexClientProvider from "../components/providers/ConvexClientProvider";
 import { ThemeProvider } from "../components/common/ThemeProvider";
 import { SolanaProvider } from "../components/providers/SolanaProvider";
+import { Toaster } from "../components/ui/sonner";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -44,7 +45,10 @@ export default function RootLayout({
             afterSignUpUrl="/onboard"
           >
             <SolanaProvider>
-              <ConvexClientProvider>{children}</ConvexClientProvider>
+              <ConvexClientProvider>
+                {children}
+                <Toaster />
+              </ConvexClientProvider>
             </SolanaProvider>
           </ClerkProvider>
         </ThemeProvider>
