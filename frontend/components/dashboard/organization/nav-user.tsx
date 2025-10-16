@@ -1,10 +1,8 @@
 "use client";
 
 import {
-  IconCreditCard,
   IconDotsVertical,
   IconLogout,
-  IconNotification,
   IconUserCircle,
 } from "@tabler/icons-react";
 import { useClerk, useUser } from "@clerk/nextjs";
@@ -29,7 +27,7 @@ import {
 export function NavUser() {
   const { isMobile } = useSidebar();
   const { user } = useUser();
-  const { signOut } = useClerk();
+  const { signOut, openUserProfile } = useClerk();
 
   if (!user) return null;
 
@@ -38,6 +36,10 @@ export function NavUser() {
   const userAvatar = user.imageUrl || "";
   const userInitials =
     user.firstName?.charAt(0) + (user.lastName?.charAt(0) || "");
+
+  const handleAccountClick = () => {
+    openUserProfile();
+  };
 
   return (
     <SidebarMenu>
@@ -87,17 +89,9 @@ export function NavUser() {
             </DropdownMenuLabel>
             <DropdownMenuSeparator />
             <DropdownMenuGroup>
-              <DropdownMenuItem>
+              <DropdownMenuItem onClick={handleAccountClick}>
                 <IconUserCircle />
                 Account
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconCreditCard />
-                Billing
-              </DropdownMenuItem>
-              <DropdownMenuItem>
-                <IconNotification />
-                Notifications
               </DropdownMenuItem>
             </DropdownMenuGroup>
             <DropdownMenuSeparator />
